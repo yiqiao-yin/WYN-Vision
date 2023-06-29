@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from PIL import Image
 import streamlit as st
 import tensorflow as tf
 
@@ -12,8 +13,13 @@ if uploaded_file is not None:
     st.image(uploaded_file)
     st.write(type(uploaded_file))
 
+    # Convert to array
+    image = Image.open(uploaded_file)
+    img_array = np.array(image)
+
     # Inference
-    # pred = new_model.predict(uploaded_file)
+    # w, h = img_array.shape
+    # pred = new_model.predict(img_array.reshape((1, w, h)))
     # label = np.argmax(pred, axis=1)
 
 else:
