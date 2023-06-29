@@ -14,11 +14,12 @@ if uploaded_file is not None:
 
     # Convert to array
     image = Image.open(uploaded_file)
-    img_array = np.array(image)[:,:,0:3]
-    img_array = img_array.resize((28, 28))
+    image = np.array(image)[:,:,0:3]
+    image = np.resize(image, (28, 28))
+    image = image.resize((28, 28))
 
     # Inference
-    st.write(img_array.shape)
+    st.write(image.shape)
     # pred = new_model.predict(img_array.reshape((1, w, h)))
     # label = np.argmax(pred, axis=1)
     # st.write(f"Classification Result: {label}")
