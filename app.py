@@ -11,11 +11,12 @@ new_model = tf.keras.models.load_model('toy_mnist_model.h5')
 uploaded_file = st.file_uploader("Upload your file here...", type=['png', 'jpeg', 'jpg'])
 if uploaded_file is not None:
     st.image(uploaded_file)
-    st.write(type(uploaded_file))
+    # st.write(type(uploaded_file))
 
     # Convert to array
     image = Image.open(uploaded_file)
     img_array = np.array(image)
+    st.write(type(img_array))
 
     # Inference
     # w, h = img_array.shape
