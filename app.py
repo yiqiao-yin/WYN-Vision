@@ -14,10 +14,10 @@ if uploaded_file is not None:
 
     # Convert to array
     image = Image.open(uploaded_file)
-    img_array = np.array(image)
+    img_array = np.array(image)[:,:,0:3]
+    img_array.resize((28, 28))
 
     # Inference
-    # w, h = img_array.shape
     st.write(img_array.shape)
     # pred = new_model.predict(img_array.reshape((1, w, h)))
     # label = np.argmax(pred, axis=1)
