@@ -17,10 +17,11 @@ if uploaded_file is not None:
     img_array = np.array(image)
 
     # Inference
-    w, h = img_array.shape
-    pred = new_model.predict(img_array.reshape((1, w, h)))
-    label = np.argmax(pred, axis=1)
-    st.write(f"Classification Result: {label}")
+    # w, h = img_array.shape
+    st.write(img_array.shape)
+    # pred = new_model.predict(img_array.reshape((1, w, h)))
+    # label = np.argmax(pred, axis=1)
+    # st.write(f"Classification Result: {label}")
 
 else:
     st.warning("Please upload a jpg/png file.")
