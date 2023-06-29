@@ -13,6 +13,9 @@ if uploaded_file is not None:
     # Success message
     st.success("File uploaded successfully.")
 
+    # To read file as bytes:
+    bytes_data = uploaded_file.getvalue()
+
     # Convert bytes data to a NumPy array
     img = np.frombuffer(uploaded_file, dtype=np.uint8)
 
