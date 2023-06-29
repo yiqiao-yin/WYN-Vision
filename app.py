@@ -1,4 +1,8 @@
+import numpy as np
 import streamlit as st
-from src.models.img_gen import *
+import tensorflow as tf
 
-st.write(url_to_image)
+# Load model
+new_model = tf.keras.models.load_model('toy_mnist_model.h5')
+
+st.write("hello world")
