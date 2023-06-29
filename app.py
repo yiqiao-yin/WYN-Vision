@@ -13,9 +13,12 @@ if uploaded_file is not None:
     # Success message
     st.success("File uploaded successfully.")
 
+    # Convert bytes data to a NumPy array
+    img = np.frombuffer(uploaded_file, dtype=np.uint8)
+
     # Plot
     fig, ax = plt.subplots()
-    ax.imshow(uploaded_file)
+    ax.imshow(img)
     st.pyplot(fig)
 
 else:
