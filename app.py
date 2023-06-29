@@ -7,22 +7,8 @@ import tensorflow as tf
 new_model = tf.keras.models.load_model('toy_mnist_model.h5')
 
 # Load image
-# Insert a file uploader that accepts multiple files at a time
-uploaded_file = st.file_uploader("Choose a jpg/png file")
+uploaded_file = st.file_uploader("Upload your file here...", type=['png', 'jpeg', 'jpg'])
 if uploaded_file is not None:
-    # Success message
-    st.success("File uploaded successfully.")
-
-    # To read file as bytes:
-    bytes_data = uploaded_file.getvalue()
-
-    # Convert bytes data to a NumPy array
-    img = np.frombuffer(bytes_data, dtype=np.uint8)
-
-    # Plot
-    fig, ax = plt.subplots()
-    ax.imshow(img)
-    st.pyplot(fig)
-
+    st.image(uploaded_file)
 else:
     st.warning("Please upload a csv file.")
