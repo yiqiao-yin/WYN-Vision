@@ -15,7 +15,7 @@ if uploaded_file is not None:
 
     # Plot
     fig, ax = plt.subplots()
-    ax.imshow(img)
+    ax.imshow(uploaded_file)
     st.pyplot(fig)
 
 else:
