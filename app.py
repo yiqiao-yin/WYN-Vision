@@ -17,7 +17,7 @@ if uploaded_file is not None:
     bytes_data = uploaded_file.getvalue()
 
     # Convert bytes data to a NumPy array
-    img = np.frombuffer(uploaded_file, dtype=np.uint8)
+    img = np.frombuffer(bytes_data, dtype=np.uint8)
 
     # Plot
     fig, ax = plt.subplots()
