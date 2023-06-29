@@ -16,7 +16,6 @@ if uploaded_file is not None:
     image = Image.open(uploaded_file)
     image = np.array(image)[:,:,0:3]
     image = np.resize(image, (28, 28))
-    image = image.resize((28, 28))
 
     # Inference
     st.write(image.shape)
