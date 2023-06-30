@@ -15,7 +15,7 @@ st.markdown(
 
 
 # Load model
-new_model = tf.keras.models.load_model("toy_mnist_model.h5")
+new_model = tf.keras.models.load_model("models/toy_mnist_model.h5")
 
 
 # Load image
