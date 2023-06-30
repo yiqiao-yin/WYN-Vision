@@ -1,14 +1,27 @@
 import matplotlib.pyplot as plt
 import numpy as np
-from PIL import Image
 import streamlit as st
 import tensorflow as tf
+from PIL import Image
+
+# Setting page title and header
+st.set_page_config(page_title="WYN AI", page_icon=":robot_face:")
+st.markdown(
+    f"""
+        <h1 style='text-align: center;'>W.Y.N. Vision 🤖</h1>
+    """,
+    unsafe_allow_html=True,
+)
+
 
 # Load model
-new_model = tf.keras.models.load_model('toy_mnist_model.h5')
+new_model = tf.keras.models.load_model("toy_mnist_model.h5")
+
 
 # Load image
-uploaded_file = st.file_uploader("Upload your file here...", type=['png', 'jpeg', 'jpg'])
+uploaded_file = st.file_uploader(
+    "Upload your file here...", type=["png", "jpeg", "jpg"]
+)
 if uploaded_file is not None:
     st.image(uploaded_file)
 
