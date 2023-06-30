@@ -16,8 +16,9 @@ if uploaded_file is not None:
     w, h = 28, 28
     image = Image.open(uploaded_file)
     image = np.array(image)
-    st.write(image.shape)
+    st.write(f"Dimension of the original image: {image.shape}")
     image = np.resize(image, (w, h))
+    st.write(f"Dimension of resized image: {image.shape}")
 
     # Inference
     pred = new_model.predict(image.reshape((1, w, h)))
