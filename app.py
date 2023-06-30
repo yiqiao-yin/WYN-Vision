@@ -15,6 +15,7 @@ if uploaded_file is not None:
     # Convert to array
     w, h = 28, 28
     image = Image.open(uploaded_file)
+    st.write(image.shape)
     image = np.array(image)[:,:,0:3]
     image = np.resize(image, (w, h))
 
