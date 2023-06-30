@@ -13,15 +13,15 @@ if uploaded_file is not None:
     st.image(uploaded_file)
 
     # Convert to array
+    w, h = 28, 28
     image = Image.open(uploaded_file)
     image = np.array(image)[:,:,0:3]
-    image = np.resize(image, (28, 28))
+    image = np.resize(image, (w, h))
 
     # Inference
-    st.write(image.shape)
-    # pred = new_model.predict(img_array.reshape((1, w, h)))
-    # label = np.argmax(pred, axis=1)
-    # st.write(f"Classification Result: {label}")
+    pred = new_model.predict(image.reshape((1, w, h)))
+    label = np.argmax(pred, axis=1)
+    st.write(f"Classification Result: {label}")
 
 else:
     st.warning("Please upload a jpg/png file.")
