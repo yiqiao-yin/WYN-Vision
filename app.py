@@ -117,7 +117,7 @@ elif task == "Text-to-Image":
         st.write(img_array.shape)
         fig, ax = plt.subplots()
         ax.axis('off')
-        ax.imshow(img_array)
+        ax.imshow(img_array[:,:,::-1])
         st.pyplot(fig)
     else:
         st.warning("Please enter a text and click the 'Create!' button.")
