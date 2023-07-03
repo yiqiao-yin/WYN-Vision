@@ -111,6 +111,7 @@ if task == "Image Classification":
 elif task == "Text-to-Image":
     text_prompt = st.text_input('Write what you want to create:', 'a cat in front of a fire place')
     img_array = text_to_img(prompt=text_prompt)
+    st.write(img_array.shape)
     fig, ax = plt.subplots()
     ax.plot(img_array)
     st.pyplot(fig)
