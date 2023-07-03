@@ -111,7 +111,7 @@ if task == "Image Classification":
     else:
         st.warning("Please upload a jpg/png file.")
 elif task == "Text-to-Image":
-    with st.form(key="my_form", clear_on_submit=True):
+    with st.form(key="my_form"):
         text_prompt = st.text_input('Write what you want to create:', 'a cat in front of a fire place')
         submit_button = st.form_submit_button(label="Create!")
     if submit_button == True:
