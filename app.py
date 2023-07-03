@@ -78,14 +78,16 @@ st.sidebar.markdown(
     "@ [Yiqiao Yin](https://www.y-yin.io/) | [LinkedIn](https://www.linkedin.com/in/yiqiaoyin/) | [YouTube](https://youtube.com/YiqiaoYin/)"
 )
 
-# Load model
-new_model = tf.keras.models.load_model("models/toy_mnist_model.h5")
-if new_model is not None:
-    st.success("Load a neural network model successfully.")
 
 
 # Choose task
 if task == "Image Classification":
+
+    # Load model
+    new_model = tf.keras.models.load_model("models/toy_mnist_model.h5")
+    if new_model is not None:
+        st.success("Load a neural network model successfully.")
+
     # Load image
     uploaded_file = st.file_uploader(
         "Upload your file here...", type=["png", "jpeg", "jpg"]
