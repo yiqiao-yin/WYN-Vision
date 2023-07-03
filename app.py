@@ -113,6 +113,7 @@ elif task == "Text-to-Image":
     img_array = text_to_img(prompt=text_prompt)
     st.write(img_array.shape)
     fig, ax = plt.subplots()
+    ax.axis('off')
     ax.imshow(img_array)
     st.pyplot(fig)
 else:
