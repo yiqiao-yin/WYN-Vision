@@ -113,7 +113,7 @@ elif task == "Text-to-Image":
     img_array = text_to_img(prompt=text_prompt)
     st.write(img_array.shape)
     fig, ax = plt.subplots()
-    ax.plot(img_array)
+    ax.imshow(img_array)
     st.pyplot(fig)
 else:
     st.warning("Please select a task from the sidebar on the left.")
