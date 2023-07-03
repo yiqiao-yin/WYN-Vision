@@ -63,7 +63,11 @@ if task == "Image Classification":
     else:
         st.warning("Please upload a jpg/png file.")
 elif task == "Text-to-Image":
-
+    text_prompt = st.text_input('Write what you want to create:', 'a cat in front of a fire place')
+    img_array = text_to_img(prompt=text_prompt)
+    fig, ax = plt.subplots()
+    ax.plot(img_array)
+    st.pyplot(fig)
 else:
     st.warning("Please select a task from the sidebar on the left.")
 
