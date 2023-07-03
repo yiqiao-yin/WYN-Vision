@@ -109,12 +109,17 @@ if task == "Image Classification":
     else:
         st.warning("Please upload a jpg/png file.")
 elif task == "Text-to-Image":
-    text_prompt = st.text_input('Write what you want to create:', 'a cat in front of a fire place')
-    img_array = text_to_img(prompt=text_prompt)
-    st.write(img_array.shape)
-    fig, ax = plt.subplots()
-    ax.axis('off')
-    ax.imshow(img_array)
-    st.pyplot(fig)
+    with st.form(key="my_form", clear_on_submit=True):
+        text_prompt = st.text_input('Write what you want to create:', 'a cat in front of a fire place')
+        submit_button = st.form_submit_button(label="Create!")
+    if submit_button == True:
+        img_array = text_to_img(prompt=text_prompt)
+        st.write(img_array.shape)
+        fig, ax = plt.subplots()
+        ax.axis('off')
+        ax.imshow(img_array)
+        st.pyplot(fig)
+    else:
+        st.warning("Please enter a text and click the 'Create!' button.")
 else:
     st.warning("Please select a task from the sidebar on the left.")
