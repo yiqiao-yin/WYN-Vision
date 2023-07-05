@@ -193,11 +193,14 @@ elif task == "Denoise Image":
         """
         **Autoencoders** are based on _Neural Networks (NNs)_ and are known as **Convolutional Neural Networks** (**CNNs** or **convnets**). A **convnet** is a __Deep Learning algorithm__ which takes an input image, assign importance (learnable weight, biases and retains spatial relationships in the data into each one of theirs layers) to various aspects/parts in the image and is able to differentiate/reconstruct the same.
 
-    The general idea behind this kind of code can be visualized here:
+        The general idea behind this kind of code can be visualized here:
 
-    ![General autoencoder](https://www.pyimagesearch.com/wp-content/uploads/2020/02/keras_denoising_autoencoder_overview.png)
+        ![General autoencoder](https://www.pyimagesearch.com/wp-content/uploads/2020/02/keras_denoising_autoencoder_overview.png)
 
-    Then, the **autoencoder** compreehends an _encoder_ and a _decoder_. The **encoder** does the _encoding process_, i.e., transforms the image into a _compressed representation_ at the same time that starts the noisy reduction. Then, the _compressed representation_ goes to **decoder** that performs the _decoder process_, restoring the image to its true and recognizable shape. At the end of the process, we remove almost all noise in the image.
+        Then, the **autoencoder** compreehends an _encoder_ and a _decoder_. The **encoder** does the _encoding process_, i.e., transforms the image into a _compressed representation_ at the same time that starts the noisy reduction. Then, the _compressed representation_ goes to **decoder** that performs the _decoder process_, restoring the image to its true and recognizable shape. At the end of the process, we remove almost all noise in the image.
+
+        ⚠️⚠️⚠️To interact with the app, you'll need a picture. You can find a sample picture [here](https://github.com/yiqiao-yin/WYN-Vision/tree/main/pics).
+
     """
     )
 
