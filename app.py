@@ -77,6 +77,10 @@ st.sidebar.markdown(
 
 # Choose task
 if task == "Image Classification":
+    st.markdown("""
+        To learn more about image classification, please refer to this [notebook](https://github.com/yiqiao-yin/WYNAssociates/blob/main/docs/ref-deeplearning/ex02%20-%20ann%20and%20cnn.ipynb).
+        ⚠️⚠️⚠️To interact with the app, you'll need a picture. You can find a sample picture [here](https://github.com/yiqiao-yin/WYN-Vision/tree/main/pics).
+    """)
     # Load model
     new_model = tf.keras.models.load_model("models/toy_mnist_model.h5")
     if new_model is not None:
@@ -127,6 +131,8 @@ elif task == "Image Segmentation":
         see [here](https://github.com/yiqiao-yin/WYNAssociates/blob/main/docs/ref-deeplearning/ex09%20-%20image%20segmentation.ipynb).
         For publication, please cite the [source](https://doi.org/10.7910/DVN/OCYCMP).
         Github source, see [here](https://github.com/eiriniar/gleason_CNN). 
+
+        ⚠️⚠️⚠️To interact with the app, you'll need a picture. You can find a sample picture [here](https://github.com/yiqiao-yin/WYN-Vision/tree/main/pics).
     """)
     st.success("To demonstrate image segmentation task here, we use a binary mask generator by U-net trained on the above prostate cancer data. The mask highlights the cancerous regions, e.g. Gleason Score greater than 4.")
     # Load model
