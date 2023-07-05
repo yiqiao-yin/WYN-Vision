@@ -101,9 +101,40 @@ if task == "Image Classification":
         pred = new_model.predict(image.reshape((1, w, h)))
         label = np.argmax(pred, axis=1)
         st.write(f"Classification Result: {label}")
-
     else:
         st.warning("Please upload a jpg/png file.")
+elif task == "Image Segmentation":
+    # Load model
+    new_model = tf.keras.models.load_model("models/unet_6_6_allgleason_path1_.h5")
+    if new_model is not None:
+        st.success("Load a neural network model successfully.")
+    
+    # Load image
+    uploaded_file = st.file_uploader(
+        "Upload your file here...", type=["png", "jpeg", "jpg"]
+    )
+    if uploaded_file is not None:
+        st.image(uploaded_file)
+
+        # Convert to array
+        w, h = 128, 128
+        image = Image.open(uploaded_file)
+        image = np.array(image)
+        st.write(f"Dimension of the original image: {image.shape}")
+        image = np.resize(image, (w, h))
+        st.write(f"Dimension of resized image: {image.shape}")
+
+        # Inference
+        pred = new_model.predict(image.reshape((1, w, h)))
+        mask = pred[0, :, :, 0]
+
+        # Plot image
+        alpha = st.slider('Transparency of mask:', 0, 100, 1)
+        fig, ax = plt.subplots()
+        ax.axis("off")
+        ax.imshow(image)
+        ax.imshow(mask, alpha=np.round(float(alpha)/100, 1))
+        st.pyplot(fig)
 elif task == "Text-to-Image":
     with st.form(key="my_form"):
         text_prompt = st.text_input(
