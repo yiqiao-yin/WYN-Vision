@@ -110,7 +110,7 @@ elif task == "Image Segmentation":
         st.success("Load a neural network model successfully.")
 
     # Load image
-    uploaded_file = st.file_uploader(
+    uploaded_file = st.sidebar.file_uploader(
         "Upload your file here...", type=["png", "jpeg", "jpg"]
     )
     if uploaded_file is not None:
@@ -129,12 +129,12 @@ elif task == "Image Segmentation":
         mask = pred[0, :, :, 0]
 
         # Form
-        with st.form("form_to_show_gleason_visualization"):
-            st.warning(
+        with st.sidebar.form("form_to_show_gleason_visualization"):
+            st.sidebar.warning(
                 "The transparency level shows highlight of Gleason greater than 4, e.g. likely to be cancerous cells."
             )
-            alpha = st.slider("Transparency of mask:", 0, 100, 1)
-            submitted = st.form_submit_button("Submit")
+            alpha = st.sidebar.slider("Transparency of mask:", 0, 100, 1)
+            submitted = st.sidebar.form_submit_button("Submit")
             if submitted:
                 # Plot image
                 fig, ax = plt.subplots()
