@@ -129,12 +129,12 @@ elif task == "Image Segmentation":
         mask = pred[0, :, :, 0]
 
         # Form
-        with st.sidebar.form("form_to_show_gleason_visualization"):
-            st.sidebar.warning(
+        with st.form("form_to_show_gleason_visualization"):
+            st.warning(
                 "The transparency level shows highlight of Gleason greater than 4, e.g. likely to be cancerous cells."
             )
-            alpha = st.sidebar.slider("Transparency of mask:", 0, 100, 1)
-            submitted = st.sidebar.form_submit_button("Submit")
+            alpha = st.slider("Transparency of mask:", 0, 100, 1)
+            submitted = st.form_submit_button("Submit")
             if submitted:
                 # Plot image
                 fig, ax = plt.subplots()
