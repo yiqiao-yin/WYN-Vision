@@ -83,7 +83,7 @@ if task == "Image Classification":
         st.success("Load a neural network model successfully.")
 
     # Load image
-    uploaded_file = st.file_uploader(
+    uploaded_file = st.sidebar.file_uploader(
         "Upload your file here...", type=["png", "jpeg", "jpg"]
     )
     if uploaded_file is not None:
@@ -125,7 +125,9 @@ elif task == "Image Segmentation":
         st.write(f"Dimension of resized image: {image.shape}")
 
         # Inference
+        st.warning("AI is generating mask...")
         pred = new_model.predict(image.reshape((1, w, h, 3)))
+        st.success("AI finished generating the mask!")
         mask = pred[0, :, :, 0]
 
         # Form
