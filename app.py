@@ -121,20 +121,25 @@ elif task == "Image Segmentation":
         image = Image.open(uploaded_file)
         image = np.array(image)
         st.write(f"Dimension of the original image: {image.shape}")
-        image = np.resize(image, (w, h, 3))
+        image = cv2.resize(image, (w, h))
         st.write(f"Dimension of resized image: {image.shape}")
 
         # Inference
         pred = new_model.predict(image.reshape((1, w, h, 3)))
         mask = pred[0, :, :, 0]
 
-        # Plot image
-        alpha = st.slider('Transparency of mask:', 0, 100, 1)
-        fig, ax = plt.subplots()
-        ax.axis("off")
-        ax.imshow(image)
-        ax.imshow(mask, alpha=np.round(float(alpha)/100, 1))
-        st.pyplot(fig)
+        # Form
+        with st.form("my_form"):
+            alpha = st.slider('Transparency of mask:', 0, 100, 1)
+            # Every form must have a submit button.
+            submitted = st.form_submit_button("Submit")
+            if submitted:
+                # Plot image
+                fig, ax = plt.subplots()
+                ax.axis("off")
+                ax.imshow(image)
+                ax.imshow(mask, alpha=np.round(float(alpha)/100, 1), cmap="RdPu")
+                st.pyplot(fig)
 elif task == "Text-to-Image":
     with st.form(key="my_form"):
         text_prompt = st.text_input(
