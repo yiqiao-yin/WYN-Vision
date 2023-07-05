@@ -121,11 +121,11 @@ elif task == "Image Segmentation":
         image = Image.open(uploaded_file)
         image = np.array(image)
         st.write(f"Dimension of the original image: {image.shape}")
-        image = np.resize(image, (w, h))
+        image = np.resize(image, (w, h, 3))
         st.write(f"Dimension of resized image: {image.shape}")
 
         # Inference
-        pred = new_model.predict(image.reshape((1, w, h)))
+        pred = new_model.predict(image.reshape((1, w, h, 3)))
         mask = pred[0, :, :, 0]
 
         # Plot image
