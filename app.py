@@ -68,7 +68,7 @@ st.markdown(
 # Sidebar
 task = st.sidebar.radio(
     "Choose a task:",
-    ("Image Classification", "Image Segmentation", "Text-to-Image", "Next"),
+    ("Image Classification", "Cancer Segmentation", "Denoise Image", "Text-to-Image", "Next"),
 )
 st.sidebar.markdown(
     "@ [Yiqiao Yin](https://www.y-yin.io/) | [LinkedIn](https://www.linkedin.com/in/yiqiaoyin/) | [YouTube](https://youtube.com/YiqiaoYin/)"
@@ -107,7 +107,7 @@ if task == "Image Classification":
         st.write(f"Classification Result: {label}")
     else:
         st.warning("Please upload a jpg/png file.")
-elif task == "Image Segmentation":
+elif task == "Cancer Segmentation":
     st.markdown("""
         H&E stained images from five prostate cancer Tissue Microarrays 
         (TMAs) and corresponding Gleason annotation masks. In the masks,
@@ -177,6 +177,59 @@ elif task == "Image Segmentation":
                 st.pyplot(fig)
     else:
         st.warning("Please upload a jpg/png file.")
+
+
+
+
+
+
+elif task == "Denoise Image":
+    # Load model
+    new_model = tf.keras.models.load_model("models/denoising_mnist_ae_model.h5")
+
+    # Load image
+    uploaded_file = st.sidebar.file_uploader(
+        "Upload your file here...", type=["png", "jpeg", "jpg"]
+    )
+    if uploaded_file is not None:
+        st.image(uploaded_file)
+
+        # Convert to array
+        w, h = 28, 28
+        image = Image.open(uploaded_file)
+        image = np.array(image)
+        st.write(f"Dimension of the original image: {image.shape}")
+        image = cv2.resize(image, (w, h))
+        st.write(f"Dimension of resized image: {image.shape}")
+
+        # Inference
+        st.warning("AI is denoisying the image...")
+        pred = new_model.predict(image.reshape((1, w, h, 1)))
+        st.success("AI finished generating denoising process!")
+        denoised_img = pred[0, :, :, 0]
+
+        # Form
+        with st.form("form_to_show_gleason_visualization"):
+            st.warning(
+                "The transparency level shows highlight of denoised image over the original noisy image."
+            )
+            alpha = st.slider("Transparency of denoised image:", 0, 100, 1)
+            submitted = st.form_submit_button("Submit")
+            if submitted:
+                # Plot image
+                fig, ax = plt.subplots()
+                ax.axis("off")
+                ax.imshow(image)
+                ax.imshow(denoised_img, alpha=np.round(float(alpha) / 100, 1), cmap="RdPu")
+                st.pyplot(fig)
+    else:
+        st.warning("Please upload a jpg/png file.")
+
+
+
+
+
+
 elif task == "Text-to-Image":
     with st.form(key="my_form"):
         text_prompt = st.text_input(
