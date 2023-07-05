@@ -104,6 +104,30 @@ if task == "Image Classification":
     else:
         st.warning("Please upload a jpg/png file.")
 elif task == "Image Segmentation":
+    st.markdown("""
+        H&E stained images from five prostate cancer Tissue Microarrays 
+        (TMAs) and corresponding Gleason annotation masks. In the masks,
+        pixel indices correspond to classes as follows: 0=Benign (green),
+        1=Gleason_3 (blue), 2=Gleason_4 (yellow), 3=Gleason_5 (red),
+        4=unlabelled (white). The original site is from Harvard University.
+        Please see [here](https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/OCYCMP) or use the following citation.
+        ```
+        @data{DVN/OCYCMP_2018,
+            author = {Arvaniti, Eirini and Fricker, Kim and Moret, Michael and Rupp, Niels and Hermanns, Thomas and Fankhauser, Christian and Wey, Norbert and Wild, Peter and Rüschoff, Jan Hendrik and Claassen, Manfred},
+            publisher = {Harvard Dataverse},
+            title = {{Replication Data for: Automated Gleason grading of prostate cancer tissue microarrays via deep learning.}},
+            year = {2018},
+            version = {V1},
+            doi = {10.7910/DVN/OCYCMP},
+            url = {https://doi.org/10.7910/DVN/OCYCMP}
+        }
+        ```
+
+        To learn more about image segmentation, one can use this notebook by Mr. Yin, 
+        see [here](https://github.com/yiqiao-yin/WYNAssociates/blob/main/docs/ref-deeplearning/ex09%20-%20image%20segmentation.ipynb).
+        For publication, please cite the [source](https://doi.org/10.7910/DVN/OCYCMP).
+        Github source, see [here](https://github.com/eiriniar/gleason_CNN). 
+    """)
     # Load model
     new_model = tf.keras.models.load_model("models/unet_6_6_allgleason_path1_.h5")
     if new_model is not None:
