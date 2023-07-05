@@ -220,8 +220,8 @@ elif task == "Denoise Image":
                 # Plot image
                 fig, ax = plt.subplots()
                 ax.axis("off")
-                ax.imshow(image)
-                ax.imshow(denoised_img, alpha=np.round(float(alpha) / 100, 1), cmap="RdPu")
+                ax.imshow(image, cmap="Reds")
+                ax.imshow(denoised_img, alpha=np.round(float(alpha) / 100, 1), cmap="Reds")
                 st.pyplot(fig)
     else:
         st.warning("Please upload a jpg/png file.")
