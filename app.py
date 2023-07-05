@@ -128,6 +128,7 @@ elif task == "Image Segmentation":
         For publication, please cite the [source](https://doi.org/10.7910/DVN/OCYCMP).
         Github source, see [here](https://github.com/eiriniar/gleason_CNN). 
     """)
+    st.success("To demonstrate image segmentation task here, we use a binary mask generator by U-net trained on the above prostate cancer data. The mask highlights the cancerous regions, e.g. Gleason Score greater than 4.")
     # Load model
     new_model = tf.keras.models.load_model("models/unet_6_6_allgleason_path1_.h5")
     if new_model is not None:
