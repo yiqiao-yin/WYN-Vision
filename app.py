@@ -60,7 +60,7 @@ def url_to_image(url: str) -> np.ndarray:
 st.set_page_config(page_title="WYN AI", page_icon=":robot_face:")
 st.markdown(
     f"""
-        <h1 style='text-align: center;'>W.Y.N. Vision 👓</h1>
+        <h1 style='text-align: center;'>Vision 👓</h1>
     """,
     unsafe_allow_html=True,
 )
